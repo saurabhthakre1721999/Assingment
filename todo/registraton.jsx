@@ -6,7 +6,7 @@ const Form = () => {
     firstname: " ",
 
     lastname: "",
-    studentemail: "",
+
     birthdate: "",
     gender: "",
     streetaddress: "",
@@ -64,13 +64,18 @@ const Form = () => {
         </div>
       </div>
       <div>
-        <input type="date" name="" onChange={oninputchange} />{" "}
+        <input
+          type="date"
+          name="birthdate"
+          value={profile.birthdate}
+          onChange={oninputchange}
+        />{" "}
         <span> birthdate</span>
       </div>{" "}
       <div>
-        <select name="gender" id="">
-          <option value="">Male</option>
-          <option value=""> female</option>
+        <select name="gender" id="" onChange={oninputchange}>
+          <option value=" male">Male</option>
+          <option value="female"> female</option>
         </select>
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -222,13 +227,16 @@ const Form = () => {
             <h3> Courses</h3>
           </span>
           <span>
-            <input
-              type="text"
+            <select
+              name=" courses"
               value={profile.courses}
-              name="courses"
               id=""
               onChange={oninputchange}
-            />
+            >
+              <option value="Btech">Btech</option>
+              <option value="Bsc"> Bsc</option>
+              <option value="Mca">Mca</option>
+            </select>
           </span>{" "}
         </div>
       </div>
