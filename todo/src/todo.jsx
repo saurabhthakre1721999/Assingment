@@ -10,8 +10,9 @@ class Todo extends Component {
     const { newitem, additems } = this.state;
     const newitemlower = newitem.toLowerCase();
 
-    if (!newitemlower) {
+    if (!newitem) {
       toast("Please enter a valid item!");
+      j;
       return;
     }
     if (additems.includes(newitemlower)) {
