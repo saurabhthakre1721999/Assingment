@@ -21,6 +21,7 @@ const Form = () => {
 
     courses: "",
     company: "",
+    comments: "",
   });
   const oninputchange = (e) => {
     const { name, value } = e.target;
@@ -63,7 +64,7 @@ const Form = () => {
         </div>
       </div>
       <div>
-        <input type="date time" name="lastname" onChange={oninputchange} />{" "}
+        <input type="date" name="" onChange={oninputchange} />{" "}
         <span> birthdate</span>
       </div>{" "}
       <div>
@@ -81,6 +82,7 @@ const Form = () => {
               type="text"
               name="streetaddress"
               id=""
+              value={profile.streetaddress}
               onChange={oninputchange}
             />
           </span>
@@ -92,6 +94,7 @@ const Form = () => {
               type="text"
               name="streetaddressline2"
               id=""
+              value={profile.streetaddressline2}
               onChange={oninputchange}
             />
           </span>
@@ -101,20 +104,38 @@ const Form = () => {
           <span>
             {" "}
             <span>
-              <input type="text" name="city" id="" onChange={oninputchange} />{" "}
+              <input
+                type="text"
+                value={profile.city}
+                name="city"
+                id=""
+                onChange={oninputchange}
+              />{" "}
             </span>
             <span> City</span>
           </span>
           <span>
             {" "}
             <span>
-              <input type="text" name="state" id="" onChange={oninputchange} />{" "}
+              <input
+                type="text"
+                value={profile.state}
+                name="state"
+                id=""
+                onChange={oninputchange}
+              />{" "}
             </span>
             <span> State</span>
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <input type="text" name="Postal" id="" onChange={oninputchange} />
+          <input
+            type="text"
+            name="Postal"
+            value={profile.postal}
+            id=""
+            onChange={oninputchange}
+          />
           <span> postal/zip code</span>
         </div>
       </div>
@@ -126,9 +147,10 @@ const Form = () => {
           </span>
           <span>
             <input
-              type="mail"
+              type="email"
               name="studntemail"
               id=""
+              value={profile.studentemail}
               onChange={oninputchange}
             />
           </span>{" "}
@@ -139,9 +161,10 @@ const Form = () => {
           </span>
           <span>
             <input
-              type="text"
+              type="tel"
               name="mobilenumber"
               id=""
+              value={profile.mobilenumber}
               onChange={oninputchange}
             />
           </span>{" "}
@@ -155,8 +178,9 @@ const Form = () => {
           </span>
           <span>
             <input
-              type="text"
+              type="tel"
               name="phonenumber"
+              value={profile.phonenumeber}
               id=""
               onChange={oninputchange}
             />
@@ -170,6 +194,7 @@ const Form = () => {
             <input
               type="text"
               name="worknumber"
+              value={profile.worknumber}
               id=""
               onChange={oninputchange}
             />
@@ -183,7 +208,13 @@ const Form = () => {
             <h3> Company</h3>
           </span>
           <span>
-            <input type="text" name="company" id="" onChange={oninputchange} />
+            <input
+              type="text"
+              name="company"
+              value={profile.company}
+              id=""
+              onChange={oninputchange}
+            />
           </span>{" "}
         </div>{" "}
         <div>
@@ -191,9 +222,34 @@ const Form = () => {
             <h3> Courses</h3>
           </span>
           <span>
-            <input type="text" name="courses" id="" onChange={oninputchange} />
+            <input
+              type="text"
+              value={profile.courses}
+              name="courses"
+              id=""
+              onChange={oninputchange}
+            />
           </span>{" "}
         </div>
+      </div>
+      <div>
+        <span>
+          {" "}
+          <h3> aditional comments</h3>
+        </span>
+        <span>
+          {" "}
+          <textarea
+            name="comments"
+            value={profile.comments}
+            onChange={oninputchange}
+            id=""
+          ></textarea>
+        </span>
+      </div>
+      <div>
+        {" "}
+        <button> submit</button>
       </div>
     </div>
   );
