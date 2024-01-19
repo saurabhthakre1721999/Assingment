@@ -3,10 +3,10 @@ import Calendar from "react-calendar";
 
 const Form = () => {
   const [profile, setprofile] = useState({
-    firstname: " ",
+    firstname: "",
+    middelname: "",
 
     lastname: "",
-
     birthdate: "",
     gender: "",
     streetaddress: "",
@@ -18,15 +18,19 @@ const Form = () => {
     mobilenumber: "",
     phonenumeber: "",
     worknumber: "",
-
     courses: "",
     company: "",
     comments: "",
+    submitstatus: false,
   });
   const oninputchange = (e) => {
     const { name, value } = e.target;
     console.log({ name, value });
     setprofile({ ...profile, [name]: value });
+  };
+
+  const inputsubmit = (e) => {
+    setprofile({ ...profile, submitstatus: !profile.submitstatus });
   };
   return (
     <div>
@@ -136,7 +140,7 @@ const Form = () => {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <input
             type="text"
-            name="Postal"
+            name="postal"
             value={profile.postal}
             id=""
             onChange={oninputchange}
@@ -153,7 +157,7 @@ const Form = () => {
           <span>
             <input
               type="email"
-              name="studntemail"
+              name="studentemail"
               id=""
               value={profile.studentemail}
               onChange={oninputchange}
@@ -228,7 +232,7 @@ const Form = () => {
           </span>
           <span>
             <select
-              name=" courses"
+              name="courses"
               value={profile.courses}
               id=""
               onChange={oninputchange}
@@ -256,9 +260,31 @@ const Form = () => {
         </span>
       </div>
       <div>
-        {" "}
-        <button> submit</button>
+        <button onClick={inputsubmit}> submit</button>
       </div>
+      {profile.submitstatus && (
+        <div>
+          <h1>your details</h1>
+          <p> firstname :- {profile.firstname} </p>
+          <p> middlename :- {profile.middelname} </p>{" "}
+          <p> lastname :- {profile.lastname} </p>
+          <p> Birthdate :- {profile.birthdate} </p>
+          <p> Gender :- {profile.gender} </p>
+          <p> City :- {profile.city} </p>
+          <p> streetaddress: {profile.streetaddressline2}</p>
+          <p> streetaddressline2: {profile.streetaddressline2}</p>
+          <p> city: {profile.firstname}</p>
+          <p> state: {profile.firstname}</p>
+          <p>postal: {profile.postal}</p>
+          <p> studentemail:{profile.studentemail}</p>
+          <p> mobilenumber: {profile.mobilenumber}</p>
+          <p> phonenumeber: {profile.phonenumeber},</p>
+          <p> worknumber: {profile.worknumber}</p>
+          <p>courses: {profile.courses}</p>
+          <p>company: {profile.company}</p>
+          <p>comments: {profile.comments}</p>
+        </div>
+      )}
     </div>
   );
 };
