@@ -4,6 +4,7 @@ const Person = () => {
   const [onclickinput, setonclickinput] = useState(false);
   const [oninput, setoninput] = useState("");
   const [addtolist, setaddtolist] = useState([]);
+
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((data) => data.json())
@@ -22,15 +23,15 @@ const Person = () => {
   //-----------------------------------------------user input---------------------------------------------
   const oninputvalue = (e) => {
     const { value } = e.target;
-    value("");
+
     setoninput(value);
     console.log("oninput", oninput);
   };
-  const addperson = (id) => {
-    setaddtolist([...addtolist]);
+  const addperson = (per) => {
+    setaddtolist([...addtolist, per]);
   };
-  console.log("person add list", addtolist);
-  return (=
+  console.log("add person", addtolist);
+  return (
     <div>
       <input
         type="text"
@@ -46,7 +47,7 @@ const Person = () => {
           <ul>
             {persons.map((per, index) => {
               return (
-                <li key={persons.id} onClick={addperson(id)}>
+                <li key={per.id} onClick={() => addperson(per)}>
                   {per.name}
                 </li>
               );
