@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 const Api = () => {
   const [products, serproduct] = useState([]);
+  const [show, setshow] = useState("");
 
   useEffect(() => {
     fetch(" https://fakestoreapi.com/products")
@@ -19,11 +20,13 @@ const Api = () => {
     <>
       {" "}
       <div>
-        {" "}
-        {products.map((pr) => (
-          <li key={products.id}> {products[0].title} </li>
-        ))}
-        <h1>products {} </h1>
+        <input type="text" name="" id="" />(
+        <ul>
+          {products.map((value) => {
+            return <li> {products.name}</li>;
+          })}
+        </ul>
+        )
       </div>
     </>
   );
