@@ -28,7 +28,11 @@ const Person = () => {
     console.log("oninput", oninput);
   };
   const addperson = (per) => {
-    setaddtolist([...addtolist, per]);
+    const add = persons.find((item) => item.id === per);
+    setaddtolist([...addtolist, add]);
+    const deletefrompersons = persons.filter((dele) => dele.id !== per);
+    setpersons(deletefrompersons);
+    console.log(" deleteitems", persons);
   };
   console.log("add person", addtolist);
   return (
@@ -47,7 +51,7 @@ const Person = () => {
           <ul>
             {persons.map((per, index) => {
               return (
-                <li key={per.id} onClick={() => addperson(per)}>
+                <li key={per.id} onClick={() => addperson(per.id)}>
                   {per.name}
                 </li>
               );
@@ -55,6 +59,17 @@ const Person = () => {
           </ul>
         </div>
       )}
+      <div>
+        {addtolist && (
+          <ul>
+            {addtolist.map((per) => {
+              return <li key={per.name}> {per.name}</li>;
+
+              <button>x</button>;
+            })}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
