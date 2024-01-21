@@ -7,8 +7,8 @@ import Form from "../registraton.jsx";
 import Callback from "./callback.jsx";
 import Api from "../apifecth.jsx";
 import Person from "./personpecker.jsx";
-import Perso from "./new.jsx";
-import Pers from "./new.jsx";
+// import Perso from "./new.jsx";
+// import Pers from "./new.jsx";
 //import Per from "./chat.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

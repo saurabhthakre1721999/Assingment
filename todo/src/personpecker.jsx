@@ -27,14 +27,28 @@ const Person = () => {
     setoninput(value);
     console.log("oninput", oninput);
   };
+  //-------------------------------------------------------------------------------------------------------------
   const addperson = (per) => {
     const add = persons.find((item) => item.id === per);
     setaddtolist([...addtolist, add]);
     const deletefrompersons = persons.filter((dele) => dele.id !== per);
     setpersons(deletefrompersons);
-    console.log(" deleteitems", persons);
+    console.log("deleteitems", persons);
   };
   console.log("add person", addtolist);
+
+  //---------------------------------------------------------------------===============================
+  const deletefromaddlist = (deleted) => {
+    const adddeletefromaddlist = addtolist.filter(
+      (select) => select.id !== deleted
+    );
+    setaddtolist(adddeletefromaddlist);
+    const deletedPerson = addtolist.find(
+      (addlistitem) => addlistitem.id === deleted
+    );
+
+    setpersons((prevPersons) => [...prevPersons, deletedPerson]);
+  };
   return (
     <div>
       <input
@@ -63,9 +77,12 @@ const Person = () => {
         {addtolist && (
           <ul>
             {addtolist.map((per) => {
-              return <li key={per.name}> {per.name}</li>;
-
-              <button>x</button>;
+              return (
+                <li key={per?.name}>
+                  {per?.name}
+                  <button onClick={() => deletefromaddlist(per.id)}>x</button>;
+                </li>
+              );
             })}
           </ul>
         )}
