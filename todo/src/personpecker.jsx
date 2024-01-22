@@ -4,6 +4,7 @@ const Person = () => {
   const [onclickinput, setonclickinput] = useState(false);
   const [oninput, setoninput] = useState("");
   const [addtolist, setaddtolist] = useState([]);
+  const [SearchList, SetSearchList] = useState([]);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -20,12 +21,20 @@ const Person = () => {
   const onclickinputbar = () => {
     setonclickinput(true);
   };
+  const filterdata = (input) => {
+    const filterlist = persons.filter((item) =>
+      item.name.toLowerCase().includes(input.toLowerCase())
+    );
+    SetSearchList(filterlist);
+    console.log("filterlist", filterlist);
+  };
   //-----------------------------------------------user input---------------------------------------------
   const oninputvalue = (e) => {
     const { value } = e.target;
 
     setoninput(value);
     console.log("oninput", oninput);
+    filterdata(value);
   };
   //-------------------------------------------------------------------------------------------------------------
   const addperson = (per) => {
@@ -56,14 +65,14 @@ const Person = () => {
         id=""
         name="name"
         value={oninput}
-        onClick={onclickinputbar}
+        onFocus={onclickinputbar}
         onChange={oninputvalue}
       />
       <hr />
-      {onclickinput && (
+      {oninput && SearchList.length > 0 && (
         <div>
           <ul>
-            {persons.map((per, index) => {
+            {SearchList.map((per, index) => {
               return (
                 <li key={per.id} onClick={() => addperson(per.id)}>
                   {per.name}
