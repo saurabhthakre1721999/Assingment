@@ -21,8 +21,11 @@ const Person = () => {
     setonclickinput(true);
   };
   const onblur = () => {
-    setonclickinput(false);
+    setTimeout(() => {
+      setonclickinput(false);
+    }, 100);
   };
+
   const filterdata = persons.filter((per) => {
     return per.name.toLowerCase().includes(oninput.toLowerCase());
   });
@@ -64,7 +67,7 @@ const Person = () => {
         name="name"
         value={oninput}
         onFocus={onclickinputbar}
-        onBlur={onblur}
+        oncblur={onblur}
         onChange={oninputvalue}
       />
       <hr />
