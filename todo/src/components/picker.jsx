@@ -3,14 +3,16 @@ import Input from "./input";
 import { useState } from "react";
 import styled from "styled-components";
 
-const Picker = () => {
+const Picker = ({ filter }) => {
   const [Image, SetImage] = useState("");
   const img = Image ? URL.createObjectURL(Image) : null;
 
   return (
     <Uploder>
       {Image ? (
-        <span style={{}}>{Image && <Photo src={img} alt="" />}</span>
+        <span style={{}}>
+          {Image && <Photo src={img} alt="" style={{ filter: filter }} />}
+        </span>
       ) : (
         <span>
           <Input SetImage={SetImage} />
@@ -24,6 +26,7 @@ export default Picker;
 const Photo = styled.img`
   width: 500px;
   height: 400px;
+  filter: ${(props) => props.style.filter || "none"};
 `;
 const Uploder = styled.div`
   display: flex;
