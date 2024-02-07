@@ -30,7 +30,7 @@ const Form = () => {
   };
 
   const inputsubmit = (e) => {
-    setprofile({ ...profile, submitstatus: !profile.submitstatus });
+    setprofile({ ...profile, submitstatus: true });
   };
   return (
     <div>
