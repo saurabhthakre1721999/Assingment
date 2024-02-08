@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Childperson from "./childusecallback";
 const Homeperson = () => {
   const [Allperson, SetAllPerson] = useState([]);
-
+  const [Selectedid, SetSelectedid] = useState([]);
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((data) => {
@@ -28,10 +28,11 @@ const Homeperson = () => {
             return { ...item, background: "red" };
           }
           return item;
+          SetSelectedid(item.id);
         });
       });
     },
-    [SetAllPerson]
+    [Selectedid]
   );
 
   console.log("in out useeffect", Allperson);
