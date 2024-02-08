@@ -20,11 +20,11 @@ const Homeperson = () => {
       SetAllPerson((prev) => {
         return prev.map((item) => {
           if (item.id === id && item.hasOwnProperty("background")) {
-            console.log("background is none now");
+            console.log("backgroundcolor is none now");
             const { background, ...other } = item;
             return other;
           } else if (item.id === id) {
-            console.log("background is red now");
+            console.log("backgroundcolor is red now");
             return { ...item, background: "red" };
           }
           return item;
