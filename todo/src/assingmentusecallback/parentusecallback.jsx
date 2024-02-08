@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Childperson from "./childusecallback";
 const Homeperson = () => {
   const [Allperson, SetAllPerson] = useState([]);
@@ -15,16 +15,24 @@ const Homeperson = () => {
         console.log("error to fetch data");
       });
   }, []);
-  const clickonchild = (id) => {
-    SetAllPerson((prev) => {
-      return prev.map((item) => {
-        if (item.id === id) {
-          return { ...item, background: "red" };
-        }
-        return item;
+  const clickonchild = useCallback(
+    (id) => {
+      SetAllPerson((prev) => {
+        return prev.map((item) => {
+          if (item.id === id && item.hasOwnProperty("background")) {
+            console.log("background is none now");
+            const { background, ...other } = item;
+            return other;
+          } else if (item.id === id) {
+            console.log("background is red now");
+            return { ...item, background: "red" };
+          }
+          return item;
+        });
       });
-    });
-  };
+    },
+    [SetAllPerson]
+  );
 
   console.log("in out useeffect", Allperson);
   return (
