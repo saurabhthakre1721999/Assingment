@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Childperson from "./childusecallback";
-const Homeperson = () => {
+const Homeperson2 = () => {
   const [Allperson, SetAllPerson] = useState([]);
 
   useEffect(() => {
@@ -16,21 +16,24 @@ const Homeperson = () => {
       });
   }, []);
   const clickonchild = (id) => {
-    SetAllPerson((prev) => {
-      return prev.map((item) => {
-        if (item.id === id) {
-          return { ...item, background: "red" };
-        }
-        return item;
-      });
-    });
+    SetSelectedId(id);
   };
 
   console.log("in out useeffect", Allperson);
   return (
     <>
-      <Childperson Allperson={Allperson} onclickhandler={clickonchild} />
+      <div>
+        {Allperson.map((per) => {
+          return (
+            <Childperson
+              onclickhandler={clickonchild}
+              key={per.id}
+              person={per}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };
-export default Homeperson;
+export default Homeperson2;

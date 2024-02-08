@@ -1,10 +1,8 @@
 import React from "react";
 
 import Grid from "@mui/material/Grid";
-import { red } from "@mui/material/colors";
-import { yellow } from "@mui/material/colors";
-import { green } from "@mui/material/colors";
-const Childperson = ({ Allperson, onclickhandler, SelectedId }) => {
+
+const Childperson = ({ Allperson, onclickhandler }) => {
   console.log("child data", Allperson);
   return (
     <>
@@ -19,7 +17,7 @@ const Childperson = ({ Allperson, onclickhandler, SelectedId }) => {
                 height: "200px",
                 border: "1px solid black",
                 margin: "10px",
-                backgroundColor: SelectedId === per.id ? "green" : "red",
+                backgroundColor: per.background,
               }}
               onClick={() => onclickhandler(per.id)}
             >
