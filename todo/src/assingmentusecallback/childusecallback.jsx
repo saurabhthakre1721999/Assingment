@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import Grid from "@mui/material/Grid";
 
@@ -17,7 +17,6 @@ const Childperson = ({ Allperson, onclickhandler }) => {
                 height: "200px",
                 border: "1px solid black",
                 margin: "10px",
-                backgroundColor: per.background,
               }}
               onClick={() => onclickhandler(per.id)}
             >
@@ -30,4 +29,4 @@ const Childperson = ({ Allperson, onclickhandler }) => {
     </>
   );
 };
-export default Childperson;
+export default memo(Childperson);

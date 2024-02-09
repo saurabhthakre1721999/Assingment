@@ -2,8 +2,8 @@ import React, { memo } from "react";
 
 import Grid from "@mui/material/Grid";
 
-const Childperson2 = ({ onclickhandler, name, person, id, background }) => {
-  console.log("child render", id);
+const Childperson2 = ({ onclickhandler, name, active, id }) => {
+  console.log("child render", id, active);
   return (
     <>
       <Grid container spacing={2}>
@@ -14,7 +14,7 @@ const Childperson2 = ({ onclickhandler, name, person, id, background }) => {
             height: "200px",
             border: "1px solid black",
             margin: "10px",
-            backgroundColor: background,
+            backgroundColor: active ? "red" : "white",
           }}
           onClick={() => onclickhandler(id)}
         >

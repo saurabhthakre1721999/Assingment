@@ -4,7 +4,7 @@ import Childperson2 from "./newchildusecallback";
 
 const Homeperson2 = () => {
   const [Allperson, SetAllPerson] = useState([]);
-  const [Selectedid, SetSelectedid] = useState([]);
+
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((data) => {
@@ -20,13 +20,8 @@ const Homeperson2 = () => {
   const clickonchild = useCallback((id) => {
     SetAllPerson((prev) => {
       return prev.map((item) => {
-        if (item.id === id && item.hasOwnProperty("background")) {
-          console.log("backgroundcolor is none now");
-          const { background, ...other } = item;
-          return other;
-        } else if (item.id === id) {
-          console.log("backgroundcolor is red now");
-          return { ...item, background: "red" };
+        if (item.id === id) {
+          item.isActive = !item.isActive;
         }
         return item;
       });
@@ -41,6 +36,7 @@ const Homeperson2 = () => {
           <Childperson2
             key={per.id}
             id={per.id}
+            active={per.isActive}
             name={per.name}
             background={per.background}
             onclickhandler={clickonchild}

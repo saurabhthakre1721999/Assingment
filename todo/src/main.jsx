@@ -17,10 +17,11 @@ import Home from "./components/Homefiter.jsx";
 import Personfilter from "./components/searcusers/person.jsx";
 import Parent from "./day 15 usecallback/parent.jsx";
 import Homeperson from "./assingmentusecallback/parentusecallback.jsx";
-import Homeperson2 from "./assingmentusecallback/parent2.jsx";
+import Homeperson2 from "./assingmentusecallback/newparentusecallback.jsx";
+
 //import Home from "./router/home.jsx";
 // import Perso from "./new.jsx";
 // import Pers from "./new.jsx";
 //import Per from "./chat.jsx";
 
-ReactDOM.createRoot(document.getElementById("root")).render(<Homeperson />);
+ReactDOM.createRoot(document.getElementById("root")).render(<Homeperson2 />);

@@ -15,27 +15,20 @@ const Homeperson = () => {
         console.log("error to fetch data");
       });
   }, []);
-  const clickonchild = useCallback(
-    (id) => {
-      SetAllPerson((prev) => {
-        return prev.map((item) => {
-          if (item.id === id && item.hasOwnProperty("background")) {
-            console.log("backgroundcolor is none now");
-            const { background, ...other } = item;
-            return other;
-          } else if (item.id === id) {
-            console.log("backgroundcolor is red now");
-            return { ...item, background: "red" };
-          }
-          return item;
-          SetSelectedid(item.id);
-        });
+  const clickonchild = useCallback((id) => {
+    SetAllPerson((prev) => {
+      return prev.map((item) => {
+        if (item.id === id) return;
+        {
+          item.isActive = !isActive;
+          console.log("ITEM", item);
+        }
+        return item;
       });
-    },
-    [Selectedid]
-  );
+    });
+  }, []);
 
-  console.log("in out useeffect", Allperson);
+  console.log(" parent render", Allperson);
   return (
     <>
       <Childperson Allperson={Allperson} onclickhandler={clickonchild} />
