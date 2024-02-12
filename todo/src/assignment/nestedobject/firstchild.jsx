@@ -1,19 +1,40 @@
 import React from "react";
 import { TREE_DATA } from "./treedata";
-import { useState } from "react";
+
 import Children from "./secondchild";
 
 const Froots = () => {
+  const OnClickShow = () => {
+    SetShowchild((pre) => !pre);
+  };
+
+  const TREE = [
+    {
+      name: "Fruit",
+      children: [
+        { name: "Apple" },
+        { name: "Banana" },
+        { name: "Fruit loops" },
+      ],
+    },
+    {
+      name: "Vegetables",
+      children: [
+        {
+          name: "Green",
+          children: [{ name: "Broccoli" }, { name: "Brussels sprouts" }],
+        },
+        {
+          name: "Orange",
+          children: [{ name: "Pumpkins" }, { name: "Carrots" }],
+        },
+      ],
+    },
+  ];
+
   return (
     <>
-      {TREE_DATA.map((FrootsVegitable) => {
-        return (
-          <div>
-            {FrootsVegitable.name}
-            <Children children={FrootsVegitable.children} />
-          </div>
-        );
-      })}
+      <Children Tree={TREE} />
     </>
   );
 };

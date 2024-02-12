@@ -1,20 +1,26 @@
 import React from "react";
 import { useState } from "react";
-import Thirdchild from "./thirdchild";
-const Children = ({ children }) => {
-  console.log("secondchildren", children);
+
+const Children = ({ Tree }) => {
+  const [Showchild, SetShowchild] = useState(false);
+  const showitems = () => {
+    SetShowchild(!Showchild);
+  };
+  console.log("secondchildren", Tree);
   return (
     <>
-      {children
-        ? children.map((child) => {
-            return (
-              <div>
-                {child.name}
-                <Thirdchild child={child} />
+      {Tree.map((tree) => {
+        return (
+          <div>
+            <button onClick={showitems}>{tree.name}</button>
+            {tree.children && (
+              <div style={{ display: Showchild ? "none" : "block" }}>
+                <Children Tree={tree.children} />
               </div>
-            );
-          })
-        : ""}
+            )}
+          </div>
+        );
+      })}
     </>
   );
 };
