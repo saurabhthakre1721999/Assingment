@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { ContextApi } from "../context/context";
 
 const Products = ({ products }) => {
-  const { Setcart } = useContext(ContextApi);
-  console.log(Setcart);
+  const { AddtoCart } = useContext(ContextApi);
+
   return (
     <div
       style={{
@@ -20,7 +20,7 @@ const Products = ({ products }) => {
         alt=""
         style={{ width: "200px", height: "200px" }}
       />
-      <button onClick={Setcart}>Add to cart</button>
+      <button onClick={() => AddtoCart(products)}>Add to cart</button>
     </div>
   );
 };
